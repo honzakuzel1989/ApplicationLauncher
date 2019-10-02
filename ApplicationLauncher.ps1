@@ -43,13 +43,14 @@ if($ping) {
     $run = $true 
     $runtm = $RerunTimeout
     $runmsg = "The program $appname has been terminated and will be run again."
+    $firstrun = $true
     
     # MCM jede v nekonecne smycce, pokud nedojde k zavreni (ctrl + c) okna
     while($run) 
     {
         # Completed na potencialni minuly progress a pusteni app
+        if(-not $firstrun) { progress $runmsg } else { $firstrun=$false }
         Start-Process ("$apppath\$appname") -NoNewWindow -Wait
-        progress "Run again" -Completed
         
         # Pri spusteni muze cekat pozadovanou dobu, nez spusti znovu, nebo preskoci
         for($i=0; $i -lt $runtm; $i++) 
@@ -58,7 +59,7 @@ if($ping) {
             sleep 1
         }
 
-        progress $runmsg
+        progress "Run again" -Completed
     }
 }
 # Error
