@@ -1,12 +1,12 @@
 [CmdletBinding()]
 Param(
-  [Parameter(HelpMessage="The application name.", Mandatory=True)]
+  [Parameter(HelpMessage="The application name.", Mandatory=$true)]
   [string]$AppName,
   
-  [Parameter(HelpMessage="The application name.", Mandatory=True)]
+  [Parameter(HelpMessage="The application name.", Mandatory=$true)]
   [string]$AppPath,
   
-  [Parameter(HelpMessage="The connection address.", Mandatory=True)]
+  [Parameter(HelpMessage="The connection address.", Mandatory=$true)]
   [string]$ConnectionAddress,
   
   [Parameter(HelpMessage="The maximal connection test count before error is occured. Between each test is one second pause.")]
